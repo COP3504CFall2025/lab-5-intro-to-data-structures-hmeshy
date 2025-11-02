@@ -126,7 +126,7 @@ public:
 	LinkedList<T>& operator=(const LinkedList<T>& rhs) {
 		if (this == &rhs) return *this;
 		Clear();
-		count = rhs.count;
+		count = 0;
 		head = nullptr;
 		tail = nullptr;
 		Node<T>* other_node = rhs.head;
@@ -144,7 +144,7 @@ public:
 		count = 0;
 	}
 	LinkedList(const LinkedList<T>& list) {
-		count = list.count;
+		count = 0;
 		head = nullptr;
 		tail = nullptr;
 		Node<T>* other_node = list.head;
