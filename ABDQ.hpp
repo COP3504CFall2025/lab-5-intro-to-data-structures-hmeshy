@@ -56,7 +56,7 @@ public:
     ABDQ(ABDQ&& other) noexcept {
         data_ = other.data_;
         capacity_ = other.capacity_;
-        size_ = other.curr_size_;
+        size_ = other.size_;
         front_ = other.front_;
         back_ = other.back_;
         other.data_ = nullptr;
@@ -97,7 +97,7 @@ public:
         delete[] data_;
         data_ = other.data_;
         capacity_ = other.capacity_;
-        size_ = other.curr_size_;
+        size_ = other.size_;
         front_ = other.front_;
         back_ = other.back_;
         other.data_ = nullptr;

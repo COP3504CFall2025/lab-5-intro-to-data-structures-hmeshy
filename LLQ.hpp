@@ -17,12 +17,12 @@ public:
 
     // Insertion
     void enqueue(const T& item) override {
-        list.addTail(item);
+        list.AddTail(item);
     }
 
     // Deletion
     T dequeue() override {
-        return list.removeHead().data;
+        return list.RemoveHead().data;
     }
 
     // Access

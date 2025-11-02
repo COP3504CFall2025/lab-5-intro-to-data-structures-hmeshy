@@ -13,7 +13,7 @@ template <typename T>
 class LinkedList {
 public:
 	// Behaviors
-	void PrintForward() const {
+	void printForward() const {
 		if (head != nullptr) {
 			Node<T>* front = head;
 			while (front->next != nullptr) {

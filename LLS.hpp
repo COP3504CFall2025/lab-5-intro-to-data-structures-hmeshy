@@ -17,12 +17,12 @@ public:
 
     // Insertion
     void push(const T& item) override {
-        list.addTail(item);
+        list.AddTail(item);
     }
 
     // Deletion
     T pop() override {
-        return list.removeTail().data;
+        return list.RemoveTail().data;
     }
 
     // Access
