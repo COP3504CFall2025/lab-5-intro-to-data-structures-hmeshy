@@ -21,14 +21,21 @@ public:
 
     // Deletion
     T dequeue() override {
-        T data = list.getHead()->data;
-        list.RemoveHead();
-        return data;
+        if (list.getHead()) {
+            T data = list.getHead()->data;
+            list.RemoveHead();
+            return data;
+        }
+        throw std::runtime_error("Attempted to get null data");
+
     }
 
     // Access
     T peek() const override {
-        return list.getHead()->data;
+        if (list.getHead()) {
+            return list.getHead()->data;
+        }
+        throw std::runtime_error("Attempted to get null data");
     }
 
     // Getter

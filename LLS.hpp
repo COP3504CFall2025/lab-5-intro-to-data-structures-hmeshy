@@ -21,14 +21,20 @@ public:
 
     // Deletion
     T pop() override {
-        T data = list.getTail()->data;
-        list.RemoveTail();
-        return data;
+        if (list.getTail()) {
+            T data = list.getTail()->data;
+            list.RemoveTail();
+            return data;
+        }
+        throw std::runtime_error("Attempted to get null data");
     }
 
     // Access
     T peek() const override {
-        return list.getTail()->data;
+        if (list.getTail()) {
+            return list.getTail()->data;
+        }
+        throw std::runtime_error("Attempted to get null data");
     }
 
     //Getters
