@@ -46,10 +46,10 @@ public:
         }
         else {
             for (size_t i = front_; i < capacity_; i++) {
-                data_[i] = other.data_;
+                data_[i] = other.data_[i];
             }
             for (size_t i = 0; i < back_; i++) {
-                data_[i] = other.data_;
+                data_[i] = other.data_[i];
             }
         }
     }
@@ -82,10 +82,10 @@ public:
         }
         else {
             for (size_t i = front_; i < capacity_; i++) {
-                data_[i] = other.data_;
+                data_[i] = other.data_[i];
             }
             for (size_t i = 0; i < back_; i++) {
-                data_[i] = other.data_;
+                data_[i] = other.data_[i];
             }
         }
         return *this;

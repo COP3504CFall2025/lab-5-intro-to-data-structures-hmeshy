@@ -56,7 +56,7 @@ public:
 	}
 	void AddTail(const T& data) {
 		if (count == 0) {
-			addHead(data);
+			AddHead(data);
 		}
 		else {
 			Node<T>* new_tail = new Node<T>{data, tail, nullptr};
@@ -131,7 +131,7 @@ public:
 		tail = nullptr;
 		Node<T>* other_node = rhs.head;
 		while (other_node != nullptr) {
-			addTail(other_node->data);
+			AddTail(other_node->data);
 			other_node = other_node->next;
 		}
 		return *this;
@@ -149,7 +149,7 @@ public:
 		tail = nullptr;
 		Node<T>* other_node = list.head;
 		while (other_node != nullptr) {
-			addTail(other_node->data);
+			AddTail(other_node->data);
 			other_node = other_node->next;
 		}
 	}
