@@ -31,8 +31,8 @@ public:
         if (list.getHead()) {
             T data = list.getHead()->data;
             list.RemoveHead();
+            return data;
         }
-        return data;
         throw std::runtime_error("Attempted to get null data");
     }
     T popBack() override {
