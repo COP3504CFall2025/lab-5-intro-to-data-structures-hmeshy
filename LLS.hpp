@@ -22,12 +22,12 @@ public:
 
     // Deletion
     T pop() override {
-        return list.RemoveTail().data;
+        return list.RemoveTail()->data;
     }
 
     // Access
     T peek() const override {
-        return list.getTail().data;
+        return list.getTail()->data;
     }
 
     //Getters

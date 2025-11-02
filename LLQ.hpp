@@ -22,12 +22,12 @@ public:
 
     // Deletion
     T dequeue() override {
-        return list.RemoveHead().data;
+        return list.RemoveHead()->data;
     }
 
     // Access
     T peek() const override {
-        return list.getHead().data;
+        return list.getHead()->data;
     }
 
     // Getter

@@ -61,6 +61,7 @@ public:
         other.array_ = nullptr;
         other.capacity_ = 0;
         other.curr_size_ = 0;
+        other.front_ = 0;
     }
     ABQ& operator=(ABQ&& rhs) noexcept {
         if (this == &rhs) {
