@@ -101,6 +101,9 @@ public:
     }
 
     T peek() const override {
+        if (curr_size_ == 0) {
+            throw std::runtime_error("Attempted to get null data");
+        }
         return array_[curr_size_ - 1];
     }
 
