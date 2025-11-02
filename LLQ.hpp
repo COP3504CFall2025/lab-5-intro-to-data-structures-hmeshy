@@ -22,7 +22,9 @@ public:
 
     // Deletion
     T dequeue() override {
-        return list.RemoveHead()->data;
+        T data = list.getHead()->data;
+        list.RemoveHead();
+        return data;
     }
 
     // Access

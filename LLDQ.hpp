@@ -29,10 +29,14 @@ public:
 
     // Core Removal Operations
     T popFront() override {
-        return list.RemoveHead()->data;
+        T data = list.getHead()->data;
+        list.RemoveHead();
+        return data;
     }
     T popBack() override {
-        return list.RemoveTail()->data;
+        T data = list.getTail()->data;
+        list.RemoveTail();
+        return data;
     }
 
     // Element Accessors

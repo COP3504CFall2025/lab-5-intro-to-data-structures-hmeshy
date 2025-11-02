@@ -22,7 +22,9 @@ public:
 
     // Deletion
     T pop() override {
-        return list.RemoveTail()->data;
+        T data = list.getTail()->data;
+        list.RemoveTail();
+        return data;
     }
 
     // Access
