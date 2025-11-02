@@ -130,6 +130,17 @@ public:
             curr_size_--;
             array_[front_] = T{};
             front_++;
+            if (curr_size_ * 2 < capacity_) {
+                //resize down?
+                capacity_ = (capacity_ + 1)/2;
+                T* new_data_ = new T[capacity_];
+                for (size_t i = 0; i < curr_size_; i++) {
+                    new_data_[i] = array_[i + front_];
+                }
+                delete[] array_;
+                array_ = new_data_;
+                front_ = 0;
+            }
             return val;
         }
         throw std::runtime_error("Attempted to get null data");
