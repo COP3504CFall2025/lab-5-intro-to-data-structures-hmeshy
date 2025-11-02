@@ -128,7 +128,7 @@ public:
             front_++;
             return val;
         }
-        return nullptr;
+        throw std::runtime_error("Attempted to get null data");
     }
 
 };

@@ -88,6 +88,7 @@ public:
                 data_[i] = other.data_;
             }
         }
+        return *this;
     }
     ABDQ& operator=(ABDQ&& other) noexcept {
         if (this == &other) {
@@ -104,7 +105,7 @@ public:
         other.size_ = 0;
         other.front_ = 0;
         other.back_ = 0;
-
+        return *this;
     }
     ~ABDQ() override {
         delete[] data_;
@@ -143,7 +144,7 @@ public:
     // Deletion
     T popFront() override {
         if (size_ == 0) {
-            return nullptr;
+            throw std::runtime_error("Attempted to get null data");
         }
         T data_t = data_[front_];
         data_[front_] = T{};
@@ -159,7 +160,7 @@ public:
     }
     T popBack() override {
         if (size_ == 0) {
-            return nullptr;
+            throw std::runtime_error("Attempted to get null data");
         }
         T data_t;
         if (back_ == 0) {
@@ -182,11 +183,14 @@ public:
     // Access
     const T& front() const override {
         if (size_ == 0) {
-            return nullptr;
+            throw std::runtime_error("Attempted to get null data");
         }
         return data_[front_];
     }
     const T& back() const override {
+        if (size_ == 0) {
+            throw std::runtime_error("Attempted to get null data");
+        }
         if (back_ == 0) {
             return data_[capacity_];
         }
@@ -194,8 +198,59 @@ public:
     }
 
     // Getters
-    std::size_t getSize() const noexcept override {
+    [[nodiscard]] std::size_t getSize() const noexcept override {
         return size_;
+    }
+    void ensureCapacity() {
+        capacity_ *= 2;
+        T* new_data_ = new T[capacity_];
+        size_t j = 0;
+        if (back_ - front_ == size_) { // not fully looped
+            for (size_t i = front_; i < back_; i++) {
+                new_data_[j] = data_[i];
+                j++;
+            }
+        }
+        else {
+            for (size_t i = front_; i < capacity_ / 2; i++) {
+                new_data_[j] = data_[i];
+                j++;
+            }
+            for (size_t i = 0; i < back_; i++) {
+                new_data_[j] = data_[i];
+                j++;
+            }
+        }
+        front_ = 0;
+        back_ = size_;
+        delete[] data_;
+        data_ = new_data_;
+    }
+    void shrinkIfNeeded() {
+        size_t new_capacity_ = capacity_ + 1 / 2;
+        T* new_data_ = new T[new_capacity_];
+        size_t j = 0;
+        if (back_ - front_ == size_) { // not fully looped
+            for (size_t i = front_; i < back_; i++) {
+                new_data_[j] = data_[i];
+                j++;
+            }
+        }
+        else {
+            for (size_t i = front_; i < capacity_; i++) {
+                new_data_[j] = data_[i];
+                j++;
+            }
+            for (size_t i = 0; i < back_; i++) {
+                new_data_[j] = data_[i];
+                j++;
+            }
+        }
+        front_ = 0;
+        back_ = size_;
+        delete[] data_;
+        data_ = new_data_;
+        capacity_ = new_capacity_;
     }
 
 };

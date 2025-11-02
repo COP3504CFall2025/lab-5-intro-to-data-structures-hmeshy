@@ -13,7 +13,7 @@ template <typename T>
 class LinkedList {
 public:
 	// Behaviors
-	void printForward() const {
+	void PrintForward() const {
 		if (head != nullptr) {
 			Node<T>* front = head;
 			while (front->next != nullptr) {
@@ -23,7 +23,7 @@ public:
 			std::cout << front->data << std::endl;
 		}
 	}
-	void printReverse() const {
+	void PrintReverse() const {
 		if (tail != nullptr) {
 			Node<T>* back = tail;
 			while (back->prev != nullptr) {
@@ -43,7 +43,7 @@ public:
 	const Node<T>* getTail() const {return tail;}
 
 	// Insertion
-	void addHead(const T& data) {
+	void AddHead(const T& data) {
 		Node<T>* new_head = new Node<T>{data, nullptr, head};
 		count++;
 		if (head != nullptr) {
@@ -54,7 +54,7 @@ public:
 			tail = new_head;
 		}
 	}
-	void addTail(const T& data) {
+	void AddTail(const T& data) {
 		if (count == 0) {
 			addHead(data);
 		}
@@ -70,7 +70,7 @@ public:
 
 
 	// Removal
-	bool removeHead() {
+	bool RemoveHead() {
 		if (head == nullptr) {
 			return false; // only remove head if head exists
 		}
@@ -90,12 +90,12 @@ public:
 		head = new_head;
 		return true;
 	}
-	bool removeTail() {
+	bool RemoveTail() {
 		if (tail == nullptr) {
 			return false; // only remove head if head exists
 		}
 		if (count == 1) { // special case - the only element is the head & tail
-			return removeHead(); // these are equivalent in this case - why write extra code?
+			return RemoveHead(); // these are equivalent in this case - why write extra code?
 		}
 		Node<T>* new_tail = tail->prev;
 		count--;
@@ -107,7 +107,7 @@ public:
 	};
 	void Clear() {
 		while (head != nullptr) {
-			removeHead();
+			RemoveHead();
 		}
 	}
 

@@ -111,7 +111,7 @@ public:
             array_[curr_size_] = T{};
             return val;
         }
-        return nullptr;
+        throw std::runtime_error("Attempted to get null data");
     }
 
 private:
