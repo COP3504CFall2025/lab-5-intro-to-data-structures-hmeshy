@@ -11,8 +11,7 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLS() {
-        list = new LinkedList<T>{};
+    LLS() : list() {
     }
 
     // Insertion

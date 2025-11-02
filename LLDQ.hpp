@@ -15,8 +15,7 @@ private:
 
 public:
     // Constructor
-    LLDQ() {
-        list = new LinkedList<T>{};
+    LLDQ() : list() {
     }
 
     // Core Insertion Operations
