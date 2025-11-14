@@ -16,14 +16,14 @@ public:
 
     // Insertion
     void enqueue(const T& item) override {
-        list.AddTail(item);
+        list.addTail(item);
     }
 
     // Deletion
     T dequeue() override {
         if (list.getHead()) {
             T data = list.getHead()->data;
-            list.RemoveHead();
+            list.removeHead();
             return data;
         }
         throw std::runtime_error("Attempted to get null data");

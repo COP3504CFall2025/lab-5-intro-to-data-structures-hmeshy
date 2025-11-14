@@ -23,7 +23,7 @@ public:
 			std::cout << front->data << std::endl;
 		}
 	}
-	void PrintReverse() const {
+	void printReverse() const {
 		if (tail != nullptr) {
 			Node<T>* back = tail;
 			while (back->prev != nullptr) {
@@ -43,7 +43,7 @@ public:
 	const Node<T>* getTail() const {return tail;}
 
 	// Insertion
-	void AddHead(const T& data) {
+	void addHead(const T& data) {
 		Node<T>* new_head = new Node<T>{data, nullptr, head};
 		count++;
 		if (head != nullptr) {
@@ -54,9 +54,9 @@ public:
 			tail = new_head;
 		}
 	}
-	void AddTail(const T& data) {
+	void addTail(const T& data) {
 		if (count == 0) {
-			AddHead(data);
+			addHead(data);
 		}
 		else {
 			Node<T>* new_tail = new Node<T>{data, tail, nullptr};
@@ -70,7 +70,7 @@ public:
 
 
 	// Removal
-	bool RemoveHead() {
+	bool removeHead() {
 		if (head == nullptr) {
 			return false; // only remove head if head exists
 		}
@@ -90,12 +90,12 @@ public:
 		head = new_head;
 		return true;
 	}
-	bool RemoveTail() {
+	bool removeTail() {
 		if (tail == nullptr) {
 			return false; // only remove head if head exists
 		}
 		if (count == 1) { // special case - the only element is the head & tail
-			return RemoveHead(); // these are equivalent in this case - why write extra code?
+			return removeHead(); // these are equivalent in this case - why write extra code?
 		}
 		Node<T>* new_tail = tail->prev;
 		count--;
@@ -105,16 +105,16 @@ public:
 		tail = new_tail;
 		return true;
 	};
-	void Clear() {
+	void clear() {
 		while (head != nullptr) {
-			RemoveHead();
+			removeHead();
 		}
 	}
 
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept {
 		if (this == &other) return *this;
-		Clear();
+		clear();
 		head = other.head;
 		tail = other.tail;
 		count = other.count;
@@ -125,13 +125,13 @@ public:
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs) {
 		if (this == &rhs) return *this;
-		Clear();
+		clear();
 		count = 0;
 		head = nullptr;
 		tail = nullptr;
 		Node<T>* other_node = rhs.head;
 		while (other_node != nullptr) {
-			AddTail(other_node->data);
+			addTail(other_node->data);
 			other_node = other_node->next;
 		}
 		return *this;
@@ -149,7 +149,7 @@ public:
 		tail = nullptr;
 		Node<T>* other_node = list.head;
 		while (other_node != nullptr) {
-			AddTail(other_node->data);
+			addTail(other_node->data);
 			other_node = other_node->next;
 		}
 	}
@@ -163,7 +163,7 @@ public:
 		other.count = 0;
 	}
 	~LinkedList() {
-		Clear();
+		clear();
 	}
 
 private:

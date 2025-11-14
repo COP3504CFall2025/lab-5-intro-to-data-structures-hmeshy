@@ -16,14 +16,14 @@ public:
 
     // Insertion
     void push(const T& item) override {
-        list.AddTail(item);
+        list.addTail(item);
     }
 
     // Deletion
     T pop() override {
         if (list.getTail()) {
             T data = list.getTail()->data;
-            list.RemoveTail();
+            list.removeTail();
             return data;
         }
         throw std::runtime_error("Attempted to get null data");

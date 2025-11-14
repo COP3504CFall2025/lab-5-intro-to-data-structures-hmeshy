@@ -20,17 +20,17 @@ public:
 
     // Core Insertion Operations
     void pushFront(const T& item) override {
-        list.AddHead(item);
+        list.addHead(item);
     }
     void pushBack(const T& item) override {
-        list.AddTail(item);
+        list.addTail(item);
     }
 
     // Core Removal Operations
     T popFront() override {
         if (list.getHead()) {
             T data = list.getHead()->data;
-            list.RemoveHead();
+            list.removeHead();
             return data;
         }
         throw std::runtime_error("Attempted to get null data");
@@ -38,7 +38,7 @@ public:
     T popBack() override {
         if (list.getTail()) {
             T data = list.getTail()->data;
-            list.RemoveTail();
+            list.removeTail();
             return data;
         }
         throw std::runtime_error("Attempted to get null data");
